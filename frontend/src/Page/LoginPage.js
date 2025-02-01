@@ -3,10 +3,9 @@ import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 
 const AuthToggle = () => {
-    const [isLogin, setIsLogin] = useState(true);  // Track whether to show login or signup form
-
+    const [isLogin, setIsLogin] = useState(true);  
     const toggleForm = () => {
-        setIsLogin(!isLogin);  // Toggle between login and signup
+        setIsLogin(!isLogin);  
     };
 
     return (
