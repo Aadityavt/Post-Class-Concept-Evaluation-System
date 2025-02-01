@@ -2,31 +2,27 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
-    const [username, setUsername] = useState('');  // Changed email to username
+    const [username, setUsername] = useState(''); 
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate();  // To navigate after login
+    const navigate = useNavigate();  
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Add API request to login here
-        fetch('/api/accounts/login/', {  // Ensure correct endpoint
+        fetch('/api/accounts/login/', {  
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password }),  // Send username instead of email
+            body: JSON.stringify({ username, password }), 
         })
         .then(response => response.json())
         .then(data => {
-            // Check if the login was successful and handle based on role
             if (data.role === 'student') {
-                // Store the user role in localStorage (optional)
                 localStorage.setItem('role', 'student');
-                navigate('/student-dashboard');  // Navigate to student dashboard
+                navigate('/student-dashboard'); 
             } else if (data.role === 'teacher') {
-                // Store the user role in localStorage (optional)
                 localStorage.setItem('role', 'teacher');
-                navigate('/teacher-dashboard');  // Navigate to teacher dashboard
+                navigate('/teacher-dashboard'); 
             } else {
                 setError('Invalid role or credentials');
             }
