@@ -4,20 +4,17 @@ import React from "react";
 import { Link,useNavigate } from "react-router-dom";
 
 function HomePage() {
-  const navigate = useNavigate();  // Use React Router's useNavigate hook to navigate programmatically
+  const navigate = useNavigate();  
 
-  // Function to handle "Get Started" button click
   const handleGetStarted = () => {
-    const userRole = localStorage.getItem("role");  // Check if role is stored in localStorage
+    const userRole = localStorage.getItem("role");  
 
     if (userRole === "student") {
-      // If user is a student, navigate to the student dashboard
+  
       navigate("/student-dashboard");
     } else if (userRole === "teacher") {
-      // If user is a teacher, navigate to the teacher dashboard
       navigate("/teacher-dashboard");
     } else {
-      // If user is not logged in, show a message and redirect to login page
       alert("Please log in first.");
       navigate("/login");
     }
